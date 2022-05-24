@@ -1,0 +1,21 @@
+{
+  "extends": [
+    "react-app",
+    "react-app/jest",
+    "plugin:prettier/recommended"
+  ],
+  "rules": {
+    "jsx-quotes": [
+      1,
+      "prefer-double"
+    ],
+    "no-console": 1,
+    "no-debugger": 1,
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "warn"
+  },
+  "plugins": [
+    "prettier",
+    "react-hooks"
+  ]
+}
