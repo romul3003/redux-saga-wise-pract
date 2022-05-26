@@ -2,6 +2,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { selectPeople } from '../redux/reducers/people/selectors'
 import PeopleTablePagination from './PeopleTablePagination'
 import { LOAD_USERS } from '../redux/reducers/people/actions'
+import { Link } from 'react-router-dom'
 
 const PeopleTable = () => {
   const people = useSelector(selectPeople)
@@ -62,6 +63,8 @@ const PeopleTable = () => {
             </thead>
             <tbody>
               {people?.data?.results.map((character) => {
+                const id = character.url.replaceAll(/\D/g, '')
+
                 return (
                   <tr key={character.name}>
                     <td>{character.name}</td>
@@ -70,11 +73,15 @@ const PeopleTable = () => {
                     <td>{character.gender}</td>
                     <td>{character.hair_color}</td>
                     <td>{character.height}</td>
+                    <th>
+                      <Link to={`/people/${id}`}>Details</Link>
+                    </th>
                   </tr>
                 )
               })}
             </tbody>
           </table>
+          <br />
           <PeopleTablePagination
             page={people.page}
             total={people.data.count}
